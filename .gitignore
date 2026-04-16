@@ -1,0 +1,10 @@
+node_modules/
+dist/
+.env
+services/**/node_modules/
+services/**/dist/
+services/**/.vite/
+services/storage/data/uploads/
+services/*/storage/
+
+services/db/data
