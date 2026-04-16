@@ -56,8 +56,9 @@ async function submit() {
   if (!validateForm()) { showError("Fix the highlighted fields."); return; }
   saving.value = true;
   try {
-    await client.put("/settings", form);
-    settingsStore.updateFromSave(form);
+    const { data } = await client.put("/settings", form);
+    Object.assign(form, data.values);
+    settingsStore.updateFromSave(data.values);
     showSuccess("Settings saved.");
   } catch (error) {
     showError(error.response?.data?.message || "Unable to save.");

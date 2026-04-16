@@ -39,9 +39,9 @@ async function store(req, res, next) {
     }
 
     await Promise.all([
-      Setting.upsert({ name: "title", value: title }),
-      Setting.upsert({ name: "logo", value: logo || "" }),
-      Setting.upsert({ name: "status", value: status ? "true" : "false" })
+      Setting.upsert({ name: "title", value: title }, { conflictFields: ["name"] }),
+      Setting.upsert({ name: "logo", value: logo || "" }, { conflictFields: ["name"] }),
+      Setting.upsert({ name: "status", value: status ? "true" : "false" }, { conflictFields: ["name"] })
     ]);
 
     const rows = await Setting.findAll({ order: [["name", "ASC"]] });
