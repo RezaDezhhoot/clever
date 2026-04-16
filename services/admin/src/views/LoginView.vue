@@ -13,8 +13,8 @@ const errorMessage = ref("");
 const brandIcon = defaultBrandIcon;
 const errors = reactive({ email: "", password: "" });
 const form = reactive({
-  email: "admin@cleverquest.local",
-  password: "1234"
+  email: "",
+  password: ""
 });
 
 function clearError(field) { errors[field] = ""; }
