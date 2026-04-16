@@ -22,6 +22,8 @@ services:
     ports:
       - "${BACKEND_PORT:-3000}:3000"
     restart: unless-stopped
+    env_file:
+      - .env
     volumes:
       - ./services/storage/data:/app/storage
     command: sh -c "npm run db:migrate && npm run db:seed && npm run start"
